@@ -6,7 +6,8 @@ let
   mkSystem =
     {
       hostname,
-      arch
+      arch,
+      desktop ? false
     }:
     {
       nixosConfigurations.${hostname} = inputs.nixpkgs.lib.nixosSystem {
@@ -17,7 +18,7 @@ let
 	  inputs.agenix.nixosModules.default
         ];
         specialArgs = {
-          inherit inputs;
+          inherit inputs desktop;
         };
       };
     };
@@ -27,6 +28,7 @@ in
     (mkSystem {
       hostname = "trout";
       arch = "x86_64-linux";
+      desktop = true;
     })
   ];
 }
