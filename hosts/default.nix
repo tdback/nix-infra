@@ -3,11 +3,22 @@
   ...
 }:
 let
+  mkHomeManager = desktop: {
+    home-manager = {
+      useGlobalPkgs = true;
+      useUserPackages = true;
+      users = import "${inputs.self}/users";
+      extraSpecialArgs = {
+        inherit inputs desktop;
+      };
+    };
+  };
+
   mkSystem =
     {
       hostname,
       arch,
-      desktop ? false
+      desktop ? false,
     }:
     {
       nixosConfigurations.${hostname} = inputs.nixpkgs.lib.nixosSystem {
@@ -16,7 +27,9 @@ let
           "${inputs.self}/common"
           "${inputs.self}/modules"
           "${inputs.self}/hosts/${hostname}"
-	  inputs.agenix.nixosModules.default
+          inputs.agenix.nixosModules.default
+          inputs.home-manager.nixosModules.home-manager
+          (mkHomeManager desktop)
         ];
         specialArgs = {
           inherit inputs desktop;
