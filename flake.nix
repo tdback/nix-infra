@@ -1,5 +1,6 @@
 {
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05?shallow=true";
+  inputs.nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable?shallow=true";
 
   inputs.flake-parts.url = "github:hercules-ci/flake-parts?shallow=true";
   inputs.flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
