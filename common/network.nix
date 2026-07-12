@@ -1,0 +1,3 @@
+{
+  networking.domain = "tdback.net";
+}
