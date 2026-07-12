@@ -14,6 +14,7 @@ let
         modules = [
           "${inputs.self}/common"
           "${inputs.self}/hosts/${hostname}"
+	  inputs.agenix.nixosModules.default
         ];
         specialArgs = {
           inherit inputs;

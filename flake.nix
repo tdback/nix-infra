@@ -5,6 +5,9 @@
   inputs.flake-parts.url = "github:hercules-ci/flake-parts?shallow=true";
   inputs.flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
+  inputs.agenix.url = "github:ryantm/agenix?shallow=true";
+  inputs.agenix.inputs.nixpkgs.follows = "nixpkgs";
+
   outputs = inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } (
       { ... }:
