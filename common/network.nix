@@ -23,4 +23,21 @@
       DNSSEC = "false";
     };
   };
+
+  boot.kernelModules = [
+    # congestion control
+    "tcp_bbr"
+  ];
+
+  boot.kernel.sysctl = {
+    # bufferbloat mitigation and latency reduction
+    "net.core.default_qdisc" = "cake";
+    "net.ipv4.tcp_congestion_control" = "bbr";
+
+    # reuse existing TIME-WAIT connections
+    "net.ipv4.tcp_tw_reuse" = 1;
+
+    # RFC 7413 TFO extension
+    "net.ipv4.tcp_fastopen" = 3;
+  };
 }
