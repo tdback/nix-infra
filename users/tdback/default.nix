@@ -1,4 +1,8 @@
 {
+  imports = [
+    ./dots/git.nix
+  ];
+
   programs.home-manager.enable = true;
 
   home = {
