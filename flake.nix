@@ -5,10 +5,14 @@
   inputs.flake-parts.url = "github:hercules-ci/flake-parts?shallow=true";
   inputs.flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
+  inputs.home-manager.url = "github:nix-community/home-manager/release-26.05?shallow=true";
+  inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
   inputs.agenix.url = "github:ryantm/agenix?shallow=true";
   inputs.agenix.inputs.nixpkgs.follows = "nixpkgs";
 
-  outputs = inputs@{ flake-parts, ... }:
+  outputs =
+    inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } (
       { ... }:
       {
