@@ -14,6 +14,7 @@ let
         system = arch;
         modules = [
           "${inputs.self}/common"
+          "${inputs.self}/modules"
           "${inputs.self}/hosts/${hostname}"
 	  inputs.agenix.nixosModules.default
         ];
