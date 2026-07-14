@@ -1,6 +1,7 @@
 {
   imports = [
     ./dots/git.nix
+    ./dots/shell.nix
   ];
 
   programs.home-manager.enable = true;
