@@ -2,6 +2,7 @@
   imports = [
     ./dots/git.nix
     ./dots/shell.nix
+    ./dots/tmux.nix
   ];
 
   programs.home-manager.enable = true;
