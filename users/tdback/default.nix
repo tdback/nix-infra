@@ -1,6 +1,7 @@
 {
   imports = [
     ./dots/git.nix
+    ./dots/nvim.nix
     ./dots/shell.nix
     ./dots/tmux.nix
   ];
