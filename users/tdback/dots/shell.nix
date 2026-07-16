@@ -14,15 +14,20 @@
 
     logoutExtra = "clear";
 
+    historyControl = [
+      "ignoredups"
+      "ignorespace"
+    ];
+
     sessionVariables = {
       LC_ALL = "en_US.UTF-8";
       LESSHISTFILE = "-";
       MANPAGER = "${lib.getExe pkgs.less} -R -Dd+r -Du+b --use-color";
     };
 
-    historyControl = [
-      "ignoredups"
-      "ignorespace"
-    ];
+    shellAliases = {
+      "r" = "fc -s";
+      "mkdir" = "mkdir -p";
+    };
   };
 }
