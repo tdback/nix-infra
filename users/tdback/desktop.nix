@@ -1,3 +1,5 @@
 {
-  imports = [ ];
+  imports = [
+    ./dots/direnv.nix
+  ];
 }
