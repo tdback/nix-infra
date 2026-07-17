@@ -20,6 +20,13 @@
       {
         systems = [ "x86_64-linux" ];
         imports = [ ./hosts ];
+        perSystem =
+          { pkgs, ... }:
+          {
+            packages.default = pkgs.mkShellNoCC {
+              packages = with pkgs; [ just ];
+            };
+          };
       }
     );
 }
