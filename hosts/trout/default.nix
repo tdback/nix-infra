@@ -5,6 +5,7 @@
   ];
 
   my.modules = {
+    laptop.enable = true;
     networkManager.enable = true;
     zfs = {
       enable = true;
