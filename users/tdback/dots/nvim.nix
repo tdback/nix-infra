@@ -6,6 +6,15 @@
   ...
 }:
 let
+  ftPlugins =
+    files: text:
+    lib.listToAttrs (
+      lib.map (file: {
+        name = "ftplugin/${file}.lua";
+        value.text = text;
+      }) files
+    );
+
   lspServers =
     servers:
     lib.genAttrs servers (_: {
@@ -123,6 +132,13 @@ in
           transparency = true;
         };
       };
+
+      extraFiles = (
+        ftPlugins [ "markdown" "text" ] ''
+          vim.opt_local.spell = true
+          vim.opt_local.textwidth = 79
+        ''
+      );
     })
   ];
 }
