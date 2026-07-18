@@ -29,5 +29,8 @@
       nerd-fonts.terminess-ttf
       google-fonts
     ];
+
+    # home-manager can't setup PAM to allow unlocks, so do it here
+    security.pam.services.swaylock = { };
   };
 }
