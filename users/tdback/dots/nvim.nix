@@ -5,6 +5,13 @@
   desktop,
   ...
 }:
+let
+  lspServers =
+    servers:
+    lib.genAttrs servers (_: {
+      enable = true;
+    });
+in
 {
   imports = [ inputs.nixvim.homeModules.nixvim ];
 
@@ -62,6 +69,29 @@
       };
 
       plugins = {
+        cmp = {
+          enable = true;
+          autoEnableSources = true;
+          settings = {
+            sources = [
+              { name = "nvim_lsp"; }
+              { name = "buffer"; }
+              { name = "path"; }
+            ];
+            mapping = {
+              "<C-n>" = "cmp.mapping.select_next_item()";
+              "<C-p>" = "cmp.mapping.select_prev_item()";
+              "<C-y>" = "cmp.mapping.confirm({ select = true })";
+            };
+          };
+        };
+
+        lsp = {
+          enable = true;
+          keymaps.lspBuf."<leader>lf" = "format";
+          servers = lspServers [ "nil_ls" ];
+        };
+
         oil = {
           enable = true;
           settings.skip_confirm_for_simple_edits = true;
