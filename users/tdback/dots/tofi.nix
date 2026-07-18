@@ -1,4 +1,10 @@
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   programs.tofi = {
     enable = true;
     settings = {
@@ -21,4 +27,10 @@
       border-width = 0;
     };
   };
+
+  # delete cache on rebuilds
+  home.activation.regenerateTofiCache = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    TOFI_CACHE=${config.xdg.cacheHome}/tofi-drun
+    [ -f "$TOFI_CACHE" ] && ${lib.getExe' pkgs.coreutils "rm"} "$TOFI_CACHE"
+  '';
 }
