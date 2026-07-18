@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   desktop,
   ...
 }:
@@ -17,5 +18,9 @@
     username = "tdback";
     homeDirectory = "/home/tdback";
     stateVersion = "24.11";
+    packages = with pkgs; [
+      jq
+      ripgrep
+    ];
   };
 }
