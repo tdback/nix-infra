@@ -1,4 +1,10 @@
 {
+  lib,
+  pkgs,
+  desktop,
+  ...
+}:
+{
   programs.tmux = {
     enable = true;
     prefix = "C-SPACE";
@@ -27,6 +33,12 @@
       bind-key l select-pane -R
       bind-key % split-window -h -c "#{pane_current_path}"
       bind-key '"' split-window -v -c "#{pane_current_path}"
+      ${lib.optionalString desktop ''
+        bind-key -T copy-mode-vi v send-keys -X begin-selection
+        bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel ${lib.getExe' pkgs.wl-clipboard "wl-copy"}"
+        unbind-key -T copy-mode-vi Space
+        unbind-key -T copy-mode-vi Enter
+      ''}
     '';
   };
 }
