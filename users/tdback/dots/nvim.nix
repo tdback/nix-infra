@@ -53,7 +53,30 @@
     }
 
     (lib.mkIf desktop {
+      dependencies.ripgrep.enable = config.programs.nixvim.plugins.telescope.enable;
+
+      keymaps = lib.optional config.programs.nixvim.plugins.oil.enable {
+        mode = "n";
+        key = "-";
+        action = "<Cmd>Oil<CR>";
+      };
+
       plugins = {
+        oil = {
+          enable = true;
+          settings.skip_confirm_for_simple_edits = true;
+        };
+
+        telescope = {
+          enable = true;
+          keymaps = {
+            "<leader>sf".action = "find_files";
+            "<leader>sg".action = "live_grep";
+            "<leader>sh".action = "help_tags";
+            "<leader>sb".action = "buffers";
+          };
+        };
+
         treesitter = {
           enable = true;
           settings = {
