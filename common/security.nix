@@ -20,6 +20,10 @@
   security.allowSimultaneousMultithreading = true;
   security.forcePageTableIsolation = false;
 
+  # sandboxing
+  security.allowUserNamespaces = true;
+  security.unprivilegedUsernsClone = true;
+
   # prevent privilege escalation via kernel parameters
   boot.loader.systemd-boot.editor = false;
 }
