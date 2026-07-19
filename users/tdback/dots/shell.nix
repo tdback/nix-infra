@@ -1,6 +1,8 @@
 {
+  config,
   lib,
   pkgs,
+  desktop,
   ...
 }:
 {
@@ -19,11 +21,17 @@
       "ignorespace"
     ];
 
-    sessionVariables = {
-      LC_ALL = "en_US.UTF-8";
-      LESSHISTFILE = "-";
-      MANPAGER = "${lib.getExe pkgs.less} -R -Dd+r -Du+b --use-color";
-    };
+    sessionVariables = lib.mkMerge [
+      {
+        LC_ALL = "en_US.UTF-8";
+        LESSHISTFILE = "-";
+        MANPAGER = "${lib.getExe pkgs.less} -R -Dd+r -Du+b --use-color";
+      }
+
+      (lib.mkIf desktop {
+        GRIM_DEFAULT_DIR = "${config.home.homeDirectory}/.local/screenshots";
+      })
+    ];
 
     shellAliases = {
       "r" = "fc -s";
