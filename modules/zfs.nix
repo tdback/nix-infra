@@ -12,6 +12,10 @@ in
     hostId = lib.mkOption {
       type = lib.types.str;
     };
+    scrubInterval = lib.mkOption {
+      type = lib.types.str;
+      default = "monthly";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -19,5 +23,12 @@ in
 
     boot.supportedFilesystems.zfs = lib.mkForce true;
     boot.zfs.forceImportRoot = false;
+
+    services.zfs = {
+      autoScrub = {
+        enable = true;
+        interval = cfg.scrubInterval;
+      };
+    };
   };
 }
