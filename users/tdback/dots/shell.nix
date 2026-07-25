@@ -9,7 +9,7 @@
   programs.bash = {
     enable = true;
     initExtra = ''
-      PS1="\[\e[34m\]\w \[\e[33m\]$\[\e[0m\] "
+      PS1="${if !desktop then ''\[\e[31m\][\h] '' else ""}\[\e[34m\]\w \[\e[33m\]$\[\e[0m\] "
       set -o vi
       set -o noclobber
     '';
