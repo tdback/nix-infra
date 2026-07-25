@@ -99,7 +99,10 @@ in
         lsp = {
           enable = true;
           keymaps.lspBuf."<leader>lf" = "format";
-          servers = lspServers [ "nil_ls" ];
+          servers = lspServers [
+            "nil_ls"
+            "gopls"
+          ];
         };
 
         oil = {
@@ -134,12 +137,14 @@ in
         };
       };
 
-      extraFiles = (
-        ftPlugins [ "markdown" "text" ] ''
+      extraFiles =
+        (ftPlugins [ "markdown" "text" ] ''
           vim.opt_local.spell = true
           vim.opt_local.textwidth = 79
-        ''
-      );
+        '')
+        // (ftPlugins [ "go" ] ''
+          vim.opt_local.tabstop = 4
+        '');
     })
   ];
 }
