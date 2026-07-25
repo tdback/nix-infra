@@ -6,6 +6,7 @@
 }:
 {
   imports = (lib.optional desktop ./desktop.nix) ++ [
+    ./dots/direnv.nix
     ./dots/git.nix
     ./dots/nvim.nix
     ./dots/shell.nix
