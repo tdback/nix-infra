@@ -9,6 +9,7 @@
     ./network.nix
     ./nix.nix
     ./security.nix
+    ./ssh.nix
     ./users.nix
   ];
 }
