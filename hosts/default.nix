@@ -26,6 +26,7 @@ let
         modules = [
           "${inputs.self}/common"
           "${inputs.self}/modules"
+          "${inputs.self}/services"
           "${inputs.self}/hosts/${hostname}"
           inputs.agenix.nixosModules.default
           inputs.home-manager.nixosModules.home-manager

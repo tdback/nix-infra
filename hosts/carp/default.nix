@@ -11,4 +11,6 @@
       hostId = "644db639";
     };
   };
+
+  my.services.tailscale.enable = true;
 }

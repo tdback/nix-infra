@@ -12,4 +12,6 @@
       hostId = "44a4a60c";
     };
   };
+
+  my.services.tailscale.enable = true;
 }
