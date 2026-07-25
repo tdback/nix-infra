@@ -44,5 +44,9 @@ in
       arch = "x86_64-linux";
       desktop = true;
     })
+    (mkSystem {
+      hostname = "carp";
+      arch = "x86_64-linux";
+    })
   ];
 }
