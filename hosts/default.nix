@@ -41,13 +41,17 @@ in
 {
   flake = inputs.nixpkgs.lib.mkMerge [
     (mkSystem {
+      hostname = "carp";
+      arch = "x86_64-linux";
+    })
+    (mkSystem {
+      hostname = "sunfish";
+      arch = "x86_64-linux";
+    })
+    (mkSystem {
       hostname = "trout";
       arch = "x86_64-linux";
       desktop = true;
-    })
-    (mkSystem {
-      hostname = "carp";
-      arch = "x86_64-linux";
     })
   ];
 }
