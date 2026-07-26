@@ -9,6 +9,7 @@
     zfs = {
       enable = true;
       hostId = "644db639";
+      extraPools = [ "tank-0" ];
     };
   };
 

@@ -16,13 +16,20 @@ in
       type = lib.types.str;
       default = "monthly";
     };
+    extraPools = lib.mkOption {
+      type = with lib.types; listOf str;
+      default = [ ];
+    };
   };
 
   config = lib.mkIf cfg.enable {
     networking.hostId = cfg.hostId;
 
     boot.supportedFilesystems.zfs = lib.mkForce true;
-    boot.zfs.forceImportRoot = false;
+    boot.zfs = {
+      forceImportRoot = false;
+      extraPools = cfg.extraPools;
+    };
 
     services.zfs = {
       autoScrub = {
