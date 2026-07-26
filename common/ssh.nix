@@ -20,7 +20,7 @@
       };
       hostKeys = [
         {
-          path = "/etc/ssh/ssh_host_key_ed25519";
+          path = "/etc/ssh/ssh_host_ed25519_key";
           comment = "${config.networking.hostName}.local";
           type = "ed25519";
           rounds = 100;
