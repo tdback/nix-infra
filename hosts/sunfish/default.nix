@@ -16,5 +16,8 @@
     };
   };
 
-  my.services.tailscale.enable = true;
+  my.services = {
+    jellyfin.enable = true;
+    tailscale.enable = true;
+  };
 }
