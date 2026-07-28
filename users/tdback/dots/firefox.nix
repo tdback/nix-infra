@@ -59,19 +59,19 @@
         };
       ExtensionSettings = {
         "*".installation_mode = "blocked";
-        # ublock origin
+        # Ublock Origin.
         "uBlock0@raymondhill.net" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           installation_mode = "force_installed";
           private_browsing = true;
         };
-        # bitwarden client
+        # Bitwarden client.
         "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
           installation_mode = "force_installed";
           private_browsing = true;
         };
-        # dark reader
+        # Dark Reader.
         "addon@darkreader.org" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
           installation_mode = "force_installed";
@@ -80,13 +80,13 @@
       };
     };
 
-    # search overrides for the default profile
+    # Search overrides for the default profile.
     profiles.${config.home.username}.search = {
       force = true;
       default = "ddg";
       engines = {
         "wikipedia".metaData.alias = "@w";
-        # disable other search engines
+        # Disable other search engines.
         "amazondotcom-us".metaData.hidden = true;
         "bing".metaData.hidden = true;
         "ebay".metaData.hidden = true;

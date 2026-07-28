@@ -12,7 +12,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # unlock LUKS partition at boot
+  # Unlock LUKS partition at boot.
   boot.initrd.kernelModules = [ "cryptd" ];
   boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/CRYPTROOT";
 

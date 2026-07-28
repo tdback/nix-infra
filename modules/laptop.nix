@@ -27,13 +27,13 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # gesture support
+    # Gesture support.
     services.libinput.enable = true;
 
-    # temperature management for Intel CPUs
+    # Temperature management for Intel CPUs.
     services.thermald.enable = true;
 
-    # battery health
+    # Battery health.
     services.tlp = {
       enable = true;
       settings = {

@@ -28,8 +28,7 @@
 
       users.users.root = {
         hashedPasswordFile = null;
-        openssh.authorizedKeys.keys =
-          config.users.users.tdback.openssh.authorizedKeys.keys;
+        openssh.authorizedKeys.keys = config.users.users.tdback.openssh.authorizedKeys.keys;
       };
     }
 
@@ -37,11 +36,11 @@
       age.identityPaths = [ "/home/tdback/.ssh/id_ed25519" ];
       age.secrets.hashedPassword.file = "${inputs.self}/secrets/hashed-password.age";
 
-      # set the password for interactive logins
+      # Set the password for interactive logins.
       users.users.tdback.hashedPasswordFile = lib.mkForce config.age.secrets.hashedPassword.path;
 
-      # mount the "/home" dataset on ZFS systems at boot, or else agenix won't
-      # be able to find the key used to decrypt the password file
+      # Mount the "/home" dataset on ZFS systems at boot, or else agenix won't
+      # be able to find the key used to decrypt the password file.
       fileSystems."/home".neededForBoot = config.boot.supportedFilesystems.zfs;
     })
   ];

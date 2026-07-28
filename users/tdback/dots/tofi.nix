@@ -28,7 +28,7 @@
     };
   };
 
-  # delete cache on rebuilds
+  # Delete cache on rebuilds.
   home.activation.regenerateTofiCache = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     TOFI_CACHE=${config.xdg.cacheHome}/tofi-drun
     [ -f "$TOFI_CACHE" ] && ${lib.getExe' pkgs.coreutils "rm"} "$TOFI_CACHE"

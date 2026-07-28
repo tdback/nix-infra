@@ -4,6 +4,6 @@ let
   ];
 in
 {
-  # hashed user password
+  # Hashed user password.
   "hashed-password.age".publicKeys = tdback;
 }
