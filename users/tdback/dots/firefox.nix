@@ -1,10 +1,12 @@
 {
   config,
+  pkgs,
   ...
 }:
 {
   programs.firefox = {
     enable = true;
+    package = pkgs.unstable.firefox;
     configPath = "${config.xdg.configHome}/mozilla/firefox";
 
     # https://mozilla.github.io/policy-templates/
