@@ -11,7 +11,7 @@
         term = "foot";
         shell = "${lib.getExe pkgs.bash}";
         login-shell = "no";
-        font = "Terminess Nerd Font Mono:size=16";
+        font = "Terminess Nerd Font Mono:size=15";
       };
       scrollback.lines = 1000;
       mouse.hide-when-typing = "yes";

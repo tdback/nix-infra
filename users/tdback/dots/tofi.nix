@@ -13,7 +13,7 @@
       prompt-text = "run: ";
       prompt-padding = 0;
       font = "Terminess Nerd Font Mono";
-      font-size = 16;
+      font-size = 15;
       text-color = "#FFFFFF";
       text-cursor = true;
       background-color = "#000A";
