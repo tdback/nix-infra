@@ -9,8 +9,8 @@ check:
 build:
   sudo nixos-rebuild switch
 
-copy $host:
-  rsync --rsync-path="sudo rsync" -ax --delete ./ {{host}}:/etc/nixos/
+copy target:
+  rsync --rsync-path="sudo rsync" -ax --delete ./ {{target}}:/etc/nixos/
 
-deploy $host: (copy host)
-  nixos-rebuild switch --flake .#{{host}} --target-host {{host}} --build-host {{host}} --sudo
+deploy target builder=target: (copy target)
+  nixos-rebuild switch --flake .#{{target}} --target-host {{target}} --build-host {{builder}} --sudo --use-substitutes
