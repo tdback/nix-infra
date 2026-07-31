@@ -1,6 +1,7 @@
 {
   imports = [
     ./boot.nix
+    ./caddy.nix
     ./desktop.nix
     ./hardware.nix
     ./kernel.nix
