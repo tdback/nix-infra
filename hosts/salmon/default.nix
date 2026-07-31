@@ -4,5 +4,8 @@
     ./network.nix
   ];
 
-  my.services.tailscale.enable = true;
+  my.services = {
+    qemuGuest.enable = true;
+    tailscale.enable = true;
+  };
 }
