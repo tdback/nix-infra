@@ -5,6 +5,7 @@
   ];
 
   my.services = {
+    matrix.enable = true;
     qemuGuest.enable = true;
     tailscale.enable = true;
   };

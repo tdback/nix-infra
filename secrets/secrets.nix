@@ -16,4 +16,7 @@ in
 {
   # Hashed user password.
   "hashed-password.age".publicKeys = tdback;
+
+  # Matrix registration token.
+  "matrix-registration-token.age".publicKeys = [ salmon ];
 }
