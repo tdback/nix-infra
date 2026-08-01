@@ -9,6 +9,7 @@
     ./motd.nix
     ./network.nix
     ./nix.nix
+    ./pushover.nix
     ./security.nix
     ./ssh.nix
     ./users.nix

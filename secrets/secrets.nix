@@ -17,6 +17,10 @@ in
   # Hashed user password.
   "hashed-password.age".publicKeys = tdback;
 
+  # Pushover tokens.
+  "pushover-token.age".publicKeys = servers;
+  "pushover-user.age".publicKeys = servers;
+
   # Matrix registration token.
   "matrix-registration-token.age".publicKeys = [ salmon ];
 }

@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  desktop,
   ...
 }:
 let
@@ -31,11 +32,27 @@ in
       extraPools = cfg.extraPools;
     };
 
-    services.zfs = {
-      autoScrub = {
-        enable = true;
-        interval = cfg.scrubInterval;
-      };
-    };
+    services.zfs = lib.mkMerge [
+      {
+        autoScrub = {
+          enable = true;
+          interval = cfg.scrubInterval;
+        };
+      }
+
+      (lib.mkIf (!desktop) {
+        zed = {
+          enableMail = false;
+          settings = {
+            ZED_DEBUG_LOG = "/tmp/zed.debug.log";
+            ZED_EMAIL_ADDR = [ "root@${config.networking.fqdn}" ];
+            ZED_EMAIL_PROG = "/run/current-system/sw/bin/pushover";
+            ZED_EMAIL_OPTS = "-t '@SUBJECT@'";
+            ZED_NOTIFY_INTERVAL_SECS = 3600;
+            ZED_NOTIFY_VERBOSE = true;
+          };
+        };
+      })
+    ];
   };
 }
