@@ -6,6 +6,8 @@
   ...
 }:
 let
+  tailscale = config.services.tailscale;
+
   motd = pkgs.writeShellScriptBin "motd" ''
     BOLD="\e[1m"
     RESET="\e[0m"
@@ -38,11 +40,16 @@ let
     printf "\n"
 
     ${lib.strings.concatStrings (
-      lib.lists.forEach (lib.attrNames config.networking.interfaces) (
-        interface:
-        "printf \"$BOLD  * %-20s$RESET %s\\n\" \"IPv4 ${interface}\" \\
-          \"$(ip -4 addr show ${interface} | grep -oP '(?<=inet\\s)\\d+(\\.\\d+){3}')\"\n"
-      )
+      lib.lists.forEach
+        (
+          lib.attrNames config.networking.interfaces
+          ++ (lib.optional tailscale.enable tailscale.interfaceName)
+        )
+        (
+          interface:
+          "printf \"$BOLD  * %-20s$RESET %s\\n\" \"IPv4 ${interface}\" \\
+            \"$(ip -4 addr show ${interface} | grep -oP '(?<=inet\\s)\\d+(\\.\\d+){3}')\"\n"
+        )
     )}
 
     printf "$BOLD  * %-20s$RESET %s\n" "Release" "$RELEASE"
@@ -57,7 +64,6 @@ in
 {
   config = lib.mkIf (!desktop) {
     environment.systemPackages = [ motd ];
-
     programs.bash.loginShellInit = ''
       [ -z "$PS1" ] && return
       if command -v motd &> /dev/null; then
