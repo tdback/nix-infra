@@ -111,6 +111,12 @@ in
 
             (lib.mkIf cfg.webClient.enable {
               ${cfg.webClient.url}.extraConfig = ''
+                header {
+                    X-Frame-Options "SAMEORIGIN"
+                    X-Content-Type-Options "nosniff"
+                    X-XSS-Protection "1; mode=block"
+                    Content-Security-Policy "frame-ancestors 'self'"
+                }
                 root * ${
                   pkgs.element-web.override {
                     conf = {
