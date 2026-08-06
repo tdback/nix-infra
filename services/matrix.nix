@@ -114,7 +114,14 @@ in
                 root * ${
                   pkgs.element-web.override {
                     conf = {
-                      default_server_config."m.homeserver".base_url = "https://${fqdn}";
+                      default_server_config."m.homeserver" = {
+                        base_url = "https://${fqdn}";
+                        server_name = cfg.domain;
+                      };
+                      element_call = {
+                        use_exclusively = cfg.rtc.enable;
+                        disabled = !cfg.rtc.enable;
+                      };
                     };
                   }
                 }
