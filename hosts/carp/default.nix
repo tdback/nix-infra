@@ -13,5 +13,8 @@
     };
   };
 
-  my.services.tailscale.enable = true;
+  my.services = {
+    fail2ban.enable = true;
+    tailscale.enable = true;
+  };
 }
