@@ -12,11 +12,6 @@
         PermitRootLogin = "no";
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
-        AllowUsers =
-          let
-            users = config.users.users;
-          in
-          lib.filter (user: lib.elem "wheel" users.${user}.extraGroups) (lib.attrNames users);
       };
       hostKeys = [
         {
