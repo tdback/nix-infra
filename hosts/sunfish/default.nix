@@ -18,6 +18,17 @@
 
   my.services = {
     jellyfin.enable = true;
+    sftp = {
+      enable = true;
+      users = [
+        {
+          name = "slipstream";
+          keys = [
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGHctQvsapm0qe8vJ7DZcj/sKWg8YovJjt98rRNYF4I ty@OmniMan-Csh"
+          ];
+        }
+      ];
+    };
     tailscale.enable = true;
   };
 }
