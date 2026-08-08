@@ -32,6 +32,10 @@ in
       type = lib.types.path;
       default = "/var/lib/sftp";
     };
+    startDir = lib.mkOption {
+      type = lib.types.path;
+      default = "/";
+    };
     users = lib.mkOption {
       default = [ ];
       type = lib.types.listOf (
@@ -61,7 +65,7 @@ in
         Match Group ${cfg.group}
           ChrootDirectory ${cfg.dataDir}
           DisableForwarding yes
-          ForceCommand ${config.services.openssh.sftpServerExecutable}
+          ForceCommand ${config.services.openssh.sftpServerExecutable} -d ${cfg.startDir}
       '';
     };
   };
