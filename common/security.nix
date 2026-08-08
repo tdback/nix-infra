@@ -60,4 +60,18 @@
     # Ignore ICMP broadcasts - mitigates SMURF.
     "net.ipv4.icmp_echo_ignore_broadcasts" = 1;
   };
+
+  boot.kernelParams = [
+    # Don't merge slabs of similar size.
+    "slab_nomerge"
+
+    # Overwrite free'd pages.
+    "page_poison=1"
+
+    # Enable page allocator randomization.
+    "page_alloc.shuffle=1"
+
+    # Disable legacy vsyscall mechanism.
+    "vsyscall=none"
+  ];
 }
